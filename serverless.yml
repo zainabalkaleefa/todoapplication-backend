@@ -14,9 +14,9 @@ functions:
   tasks:
     handler: handler.tasks
     events:
-      - http:
-        path: tasks
-        method: get
-        cors: true
+       - http:
+          path: tasks
+          method: get
+          cors: true
 
 
