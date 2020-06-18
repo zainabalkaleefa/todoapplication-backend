@@ -13,6 +13,10 @@ provider:
 functions:
   tasks:
     handler: handler.tasks
+    environment:
+      dataBaseHost: ${opt:dataBaseHost}
+      dataBaseUser: ${opt:dataBaseUser}
+      dataBasePassword: ${opt:dataBasePassword}
     events:
        - http:
           path: tasks

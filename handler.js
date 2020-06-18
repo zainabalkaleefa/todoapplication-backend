@@ -10,9 +10,9 @@ app.use(bodyParser.json());
 
 //////////////////////////////////// connect to the database    //////////////////////////////////
 const connection = mysql.createConnection({
-  host: "tech-returner-rds-instance.czejbfcwo5hq.eu-west-2.rds.amazonaws.com",
-  user: "adminzainab",
-  password: "Thepeace1!",
+  host: process.env.dataBaseHost,
+  user: process.env.dataBaseUser,
+  password: process.env.dataBasePassword,
   database: "todos"                      // The DS that I created in mysql
 
 
@@ -21,11 +21,7 @@ const connection = mysql.createConnection({
 
 //////////////////////////////////////   Get    ////////////////////////////////////////////
 app.get("/tasks", function (req, res) {
-  // const Tasks =[
-  //   { text: "Task1", completed: false, id: 1, date: "2020-07-01"},
-  //   { text: "Task2", completed: false, id: 2, date: "2020-07-01"},
-  //   { text: "Task3", completed: false, id: 3, date: "2020-07-01"}
-  // ];
+ 
   const query = "SELECT * FROM Tasks;";
   connection.query(query, function (error, data) {
     if (error) {
@@ -36,7 +32,6 @@ app.get("/tasks", function (req, res) {
 
     }
   });
-  // res.json(Tasks);
 });
 
 //////////////////////////////////////   Delete    ////////////////////////////////////////////
